@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-md-center mt-5">
+        <div class="col-md-3">
+            <form action="/login" method="post">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    <input type="text" class="form-control {{ 'is-invalid' if form.username.errors else '' }}"
+                           name="username">
+                    {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                    <span class="invalid-feedback"><strong>{{ error }}</strong></span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control {{ 'is-invalid' if form.password.errors else '' }}"
+                           name="password">
+                    {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                    <span class="invalid-feedback"><strong>{{ error }}</strong></span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-light">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
